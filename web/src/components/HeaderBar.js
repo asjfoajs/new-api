@@ -121,7 +121,8 @@ const HeaderBar = () => {
     {
       text: t('首页'),
       itemKey: 'home',
-      to: '/',
+      isExternal: true,
+      externalLink: 'https://genbo.ai/',
       icon: <IconHome style={headerIconStyle} />,
     },
     {
