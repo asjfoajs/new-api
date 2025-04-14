@@ -38,6 +38,10 @@ func HandleGetTask(baseUrl, key, taskId string, adaptor channel.TaskAdaptor) (al
 		return
 	}
 
+	if aliResp.Output.TaskId == "" {
+		aliResp.Output.TaskId = taskId
+	}
+
 	return
 }
 
