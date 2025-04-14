@@ -324,13 +324,13 @@ const OtherSetting = () => {
               {t('设置关于')}
             </Button>
             {/*  */}
-            <Banner
+            {/* <Banner
               fullMode={false}
               type='info'
               description={t('移除 One API 的版权标识必须首先获得授权，项目维护需要花费大量精力，如果本项目对你有意义，请主动支持本项目')}
               closeIcon={null}
               style={{ marginTop: 15 }}
-            />
+            /> */}
             <Form.Input
               label={t('页脚')}
               placeholder={t('在此输入新的页脚，留空则使用默认页脚，支持 HTML 代码')}
