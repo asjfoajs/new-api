@@ -68,17 +68,15 @@ func HandleUpdateTask(ctx context.Context, task *model.Task, aliResp *AliRespons
 		if err != nil {
 			common.LogError(ctx, "error update user quota cache: "+err.Error())
 		} else {
-			//TODO The amount is not realized first
-
-			//quota := task.Quota
-			//if quota != 0 {
-			//	err = model.IncreaseUserQuota(task.UserId, quota, false)
-			//	if err != nil {
-			//		common.LogError(ctx, "fail to increase user quota: "+err.Error())
-			//	}
-			//	logContent := fmt.Sprintf("异步任务执行失败 %s，补偿 %s", task.TaskID, common.LogQuota(quota))
-			//	model.RecordLog(task.UserId, model.LogTypeSystem, logContent)
-			//}
+			quota := task.Quota
+			if quota != 0 {
+				err = model.IncreaseUserQuota(task.UserId, quota, false)
+				if err != nil {
+					common.LogError(ctx, "fail to increase user quota: "+err.Error())
+				}
+				logContent := fmt.Sprintf("异步任务执行失败 %s，补偿 %s", task.TaskID, common.LogQuota(quota))
+				model.RecordLog(task.UserId, model.LogTypeSystem, logContent)
+			}
 		}
 	}
 
